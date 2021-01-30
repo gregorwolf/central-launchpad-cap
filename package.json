@@ -18,7 +18,10 @@
         "sqlite3": "5.0.0"
     },
     "scripts": {
-        "start": "npx cds run"
+        "start": "npx cds run",
+        "build": "mbt build -p=cf",
+        "deploy": "cf deploy mta_archives/cap-launchpad_1.0.0.mtar",
+        "undeploy": "cf undeploy cap-launchpad --delete-services --delete-service-brokers --delete-service-keys"
     },
     "sapux": [
         "app/fiori"
