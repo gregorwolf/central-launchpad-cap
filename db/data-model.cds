@@ -1,8 +1,9 @@
+using {cuid} from '@sap/cds/common';
+
 namespace my.bookshop;
 
-entity Books {
-  key ID : Integer;
-  title  : String;
-  stock  : Integer;
-  createdBy: String @cds.on.insert : $user;
+entity Books : cuid {
+  title     : String;
+  stock     : Integer;
+  createdBy : String @cds.on.insert : $user;
 }

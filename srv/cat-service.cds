@@ -61,6 +61,7 @@ annotate CatalogService.Books with @(
      }
 ){
     ID @( title: 'ID' );    
+    ID @Core.Computed;
     title @( title: 'Title' );
     stock @( title: 'Stock' );
 };
