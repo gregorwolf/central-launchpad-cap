@@ -31,9 +31,9 @@
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "Sample2",
-                    "action": "display",
-                    "title": "CAP Sample App",
+                    "semanticObject": "Book",
+                    "action": "manage",
+                    "title": "Books",
                     "subTitle": "",
                     "icon": ""
                 }
