@@ -7,6 +7,7 @@
     "private": true,
     "dependencies": {
         "@sap/cds": "^4.4.10",
+        "@sap/cds-mtx": "^1.0.25",
         "@sap/hana-client": "^2.7.21",
         "@sap/xsenv": "^3.1.0",
         "@sap/xssec": "^3.0.10",
@@ -27,9 +28,17 @@
         "app/fiori"
     ],
     "cds": {
+        "mtx": {
+            "entity-whitelist": [],
+            "service-whitelist": []
+        },
         "requires": {
             "db": {
-                "kind": "sql"
+                "kind": "sql",
+                "multiTenant": true,
+                "vcap": {
+                    "label": "service-manager"
+                }
             },
             "uaa": {
                 "kind": "xsuaa"
