@@ -7,7 +7,7 @@ service CatalogService @(requires: 'authenticated-user') {
 }
 
 //For viewing all recoreds from cap-launchpad-srv
-service AdminService {
+service AdminService @(requires: 'system-user') {
     @readonly
     entity Books as projection on my.Books;
 }

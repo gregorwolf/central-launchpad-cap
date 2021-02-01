@@ -1,5 +1,5 @@
 {
-  "xsappname": "fiori",
+  "xsappname": "cap-launchpad",
   "tenant-mode": "dedicated",
   "description": "Security profile of called application",
   "scopes": [

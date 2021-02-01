@@ -41,7 +41,7 @@ modules:
            sap.cloud.service: my_service
          - Authentication: OAuth2UserTokenExchange
            Name: cap-launchpad-uaa
-           ServiceInstanceName: fiori-xsuaa-service
+           ServiceInstanceName: cap-launchpad-uaa
            ServiceKeyName: cap-launchpad-uaa-key
            sap.cloud.service: my_service
          existing_destinations_policy: update    
@@ -85,9 +85,9 @@ modules:
     - name: cap-launchpad-db
     - name: cap-launchpad-uaa
    provides:
-    - name: srv-api      # required by consumers of CAP services (e.g. approuter)
+    - name: srv-url      # required by consumers of CAP services (e.g. approuter)
       properties:
-        srv-url: ${default-url}
+        url: ${default-url}
 
  # -------------------- SIDECAR MODULE ------------------------
  - name: cap-launchpad-db-deployer
@@ -120,7 +120,7 @@ resources:
  - name: cap-launchpad-destination-service
    type: org.cloudfoundry.managed-service
    requires:
-     - name: srv-api
+     - name: srv-url
    parameters:
      service: destination
      service-name: cap-launchpad-destination-service
@@ -135,7 +135,7 @@ resources:
                Authentication: NoAuthentication
                ProxyType: Internet
                Type: HTTP
-               URL: ~{srv-api/srv-url}
+               URL: ~{srv-url/url}
                HTML5.DynamicDestination: true
                HTML5.ForwardAuthToken: true
        
@@ -146,12 +146,29 @@ resources:
      service-name: fiori-html5-app-host-service
      service-plan: app-host
  - name: cap-launchpad-uaa
+   type: com.sap.xs.uaa
+   parameters:
+     service: xsuaa
+     service-plan: broker
+     path: ./xs-security-mt.json
+     config: # override xsappname in cds-security.json, xsappname needs to be unique
+       xsappname: cap-launchpad-${org}-${space}
+ - name: cap-launchpad-service-manager
    type: org.cloudfoundry.managed-service
    parameters:
-     path: ./xs-security.json
-     service: xsuaa
-     service-name: fiori-xsuaa-service
+     service: service-manager
+     service-plan: container
+ - name: cap-launchpad-saas-registry
+   type: org.cloudfoundry.managed-service
+   parameters:
+     service: saas-registry
      service-plan: application
-
-
+     config:
+        appName: cap-launchpad-${org}-${space} # this is the text on the tile
+        xsappname: cap-launchpad-${org}-${space} # this is the value from xsuaa.parameters.config.xsappname
+        appUrls:
+          getDependencies: ~{srv-url/url}/mt/v1.0/subscriptions/dependencies
+          onSubscription: ~{srv-url/url}/mt/v1.0/subscriptions/tenants/{tenantId}
+   requires:
+     - name: srv-url
 

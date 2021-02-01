@@ -8,6 +8,8 @@
     "dependencies": {
         "@sap/cds": "^4.4.10",
         "@sap/cds-mtx": "^1.0.25",
+        "@sap/hdi-deploy": "^4.0.1",
+        "@sap/instance-manager": "^2.2.0",
         "@sap/hana-client": "^2.7.21",
         "@sap/xsenv": "^3.1.0",
         "@sap/xssec": "^3.0.10",
@@ -19,8 +21,9 @@
         "sqlite3": "5.0.0"
     },
     "scripts": {
-        "start": "npx cds run",
+        "start": "cds run",
         "build": "mbt build -p=cf",
+        "create:service-manager": "",
         "deploy": "cf deploy mta_archives/cap-launchpad_1.0.0.mtar",
         "undeploy": "cf undeploy cap-launchpad --delete-services --delete-service-brokers --delete-service-keys"
     },
