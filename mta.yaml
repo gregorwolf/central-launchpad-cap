@@ -167,8 +167,7 @@ resources:
         appName: cap-launchpad-${org}-${space} # this is the text on the tile
         xsappname: cap-launchpad-${org}-${space} # this is the value from xsuaa.parameters.config.xsappname
         appUrls:
-          getDependencies: ~{srv-url/url}/mt/v1.0/subscriptions/dependencies
-          onSubscription: ~{srv-url/url}/mt/v1.0/subscriptions/tenants/{tenantId}
+          onSubscription: ~{srv-url/url}/mtx/v1/provisioning/tenant/{tenantId}
    requires:
      - name: srv-url
 

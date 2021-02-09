@@ -1,5 +1,5 @@
 {
-  "xsappname": "cap-launchpad",
+  "xsappname": "cap-launchpad-${org}-${space}",
   "tenant-mode": "shared",
   "scopes": [
     {
