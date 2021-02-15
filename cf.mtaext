@@ -1,0 +1,8 @@
+_schema-version: '3.1'
+ID: cap-launchpad.extension
+extends: cap-launchpad
+
+resources:
+  - name: cap-launchpad-db
+    parameters:
+      service: hana

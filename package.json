@@ -21,6 +21,7 @@
         "start": "npx cds run",
         "build": "mbt build -p=cf",
         "deploy": "cf deploy mta_archives/cap-launchpad_1.0.0.mtar",
+        "deploy:hana": "cf deploy mta_archives/cap-launchpad_1.0.0.mtar -e cf.mtaext",
         "undeploy": "cf undeploy cap-launchpad --delete-services --delete-service-brokers --delete-service-keys"
     },
     "sapux": [
