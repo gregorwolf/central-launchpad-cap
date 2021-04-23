@@ -1,6 +1,6 @@
 ###
 GET http://localhost:4004/catalog/
-Authorization: Basic alica:
+Authorization: Basic alice:
 
 ###
 GET http://localhost:4004/catalog/Books
@@ -21,3 +21,11 @@ GET http://localhost:4004/admin/
 
 ###
 GET http://localhost:4004/admin/Books
+
+###
+GET http://localhost:4004/v2/catalog/
+Authorization: Basic alice:
+
+###
+GET http://localhost:4004/v2/catalog/Books
+Authorization: Basic alice:
