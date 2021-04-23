@@ -1,0 +1,7 @@
+###
+GET http://localhost:4004/catalog/
+Authorization: Basic alica:
+
+###
+GET http://localhost:4004/catalog/Books
+Authorization: Basic alica:
