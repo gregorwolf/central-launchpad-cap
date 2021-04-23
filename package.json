@@ -6,16 +6,16 @@
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
-        "@sap/cds": "^4.4.10",
-        "@sap/hana-client": "^2.7.21",
+        "@sap/cds": "^5.0.6",
+        "@sap/hana-client": "^2.8.16",
         "@sap/xsenv": "^3.1.0",
-        "@sap/xssec": "^3.0.10",
+        "@sap/xssec": "^3.2.0",
         "express": "^4.17.1",
         "passport": "^0.4.1"
     },
     "devDependencies": {
-        "@sap/ux-specification": "^1.84.1",
-        "sqlite3": "5.0.0"
+        "@sap/ux-specification": "^1.84.9",
+        "sqlite3": "^5.0.2"
     },
     "scripts": {
         "start": "npx cds run",
