@@ -1,43 +1,44 @@
 {
-    "name": "cap-launchpad",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@sap/cds": "^5.0.6",
-        "@sap/hana-client": "^2.8.16",
-        "@sap/xsenv": "^3.1.0",
-        "@sap/xssec": "^3.2.0",
-        "express": "^4.17.1",
-        "passport": "^0.4.1"
+  "name": "cap-launchpad",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^5.0.6",
+    "@sap/hana-client": "^2.8.16",
+    "@sap/xsenv": "^3.1.0",
+    "@sap/xssec": "^3.2.0",
+    "express": "^4.17.1",
+    "passport": "^0.4.1"
+  },
+  "devDependencies": {
+    "@sap/ux-specification": "^1.84.9",
+    "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+    "start": "npx cds run",
+    "build": "mbt build -p=cf",
+    "deploy": "cf deploy mta_archives/cap-launchpad_1.0.0.mtar",
+    "deploy:hana": "cf deploy mta_archives/cap-launchpad_1.0.0.mtar -e cf.mtaext",
+    "undeploy": "cf undeploy cap-launchpad --delete-services --delete-service-brokers --delete-service-keys"
+  },
+  "sapux": [
+    "app/fiori",
+    "app/books-read"
+  ],
+  "cds": {
+    "hana": {
+      "deploy-format": "hdbtable"
     },
-    "devDependencies": {
-        "@sap/ux-specification": "^1.84.9",
-        "sqlite3": "^5.0.2"
-    },
-    "scripts": {
-        "start": "npx cds run",
-        "build": "mbt build -p=cf",
-        "deploy": "cf deploy mta_archives/cap-launchpad_1.0.0.mtar",
-        "deploy:hana": "cf deploy mta_archives/cap-launchpad_1.0.0.mtar -e cf.mtaext",
-        "undeploy": "cf undeploy cap-launchpad --delete-services --delete-service-brokers --delete-service-keys"
-    },
-    "sapux": [
-        "app/fiori"
-    ],
-    "cds": {
-        "hana": {
-            "deploy-format": "hdbtable"
-        },
-        "requires": {
-            "db": {
-                "kind": "sql"
-            },
-            "uaa": {
-                "kind": "xsuaa"
-            }
-        }
+    "requires": {
+      "db": {
+        "kind": "sql"
+      },
+      "uaa": {
+        "kind": "xsuaa"
+      }
     }
+  }
 }

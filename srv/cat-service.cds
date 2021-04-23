@@ -19,7 +19,7 @@ annotate CatalogService.Books with @(
     ]
 );
 
-annotate CatalogService.Books with @(
+annotate my.Books with @(
     UI : { 
         SelectionFields  : [
             title
@@ -36,7 +36,11 @@ annotate CatalogService.Books with @(
             {
                 $Type : 'UI.DataField',
                 Value : stock,
-            }                                   
+            }, 
+            {
+                $Type : 'UI.DataField',
+                Value : createdBy,
+            }
         ],
         Identification : [
             {
