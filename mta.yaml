@@ -61,6 +61,10 @@ modules:
        - fiori-content.zip
        name: fiori
        target-path: resources/
+     - artifacts:
+       - demobooksread.zip
+       name: demobooksread
+       target-path: resources/
  - name: fiori
    type: html5
    path: app/fiori
@@ -69,7 +73,17 @@ modules:
      commands:
      - npm install
      - npm run build
-     supported-platforms: []              
+     supported-platforms: []
+ - name: demobooksread
+   type: html5
+   path: app/books-read
+   build-parameters:
+     build-result: dist
+     builder: custom
+     commands:
+     - npm install
+     - npm run build
+     supported-platforms: []     
  # --------------------- SERVER MODULE ------------------------
  - name: cap-launchpad-srv
  # ------------------------------------------------------------
