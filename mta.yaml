@@ -66,8 +66,8 @@ modules:
        name: demobooksread
        target-path: resources/
      - artifacts:
-       - booksodatav2.zip
-       name: booksodatav2
+       - demobooksodatav2.zip
+       name: demobooksodatav2
        target-path: resources/
  - name: fiori
    type: html5
@@ -88,7 +88,7 @@ modules:
      - npm install
      - npm run build
      supported-platforms: []     
- - name: booksodatav2
+ - name: demobooksodatav2
    type: html5
    path: app/books-odatav2
    build-parameters:
