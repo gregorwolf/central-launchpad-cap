@@ -1,7 +1,7 @@
 sap.ui.controller("demo.booksodatav2.ext.controller.ListReportExt", {
 
 	onInitSmartFilterBarExtension: function (oEvent) {
-		var sUrl = "v2/catalog/Books";
+		var sUrl = this.getView().getModel().aBindings[0].oModel.sServiceUrl + "/Books";
         $.ajax({
             type: "GET",
             dataType: "json",
