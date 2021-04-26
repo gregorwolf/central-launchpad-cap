@@ -3,7 +3,11 @@ using my.bookshop as my from '../db/data-model';
 
 service CatalogService @(requires: 'authenticated-user') {
     @odata.draft.enabled
-    entity Books as projection on my.Books;
+    entity Books @(cds.redirection.target:false) as projection on my.Books;
+
+    entity NoDraftBooks as projection on my.Books;
+    @readonly
+    entity Authors as projection on my.Authors;
 }
 
 //For viewing all recoreds from cap-launchpad-srv

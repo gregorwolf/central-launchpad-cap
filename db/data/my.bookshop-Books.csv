@@ -1,3 +1,3 @@
-ID;title;stock;createdBy
-59380311-c559-4169-9a25-41f04f6639a3;Wuthering Heights;100;alice
-8aa72d42-65fc-48d3-a637-b6b86703462a;Jane Eyre;500;gregor.wolf@gmail.com
+ID;title;stock;createdBy;author_ID
+59380311-c559-4169-9a25-41f04f6639a3;Wuthering Heights;100;alice;101
+8aa72d42-65fc-48d3-a637-b6b86703462a;Jane Eyre;500;gregor.wolf@gmail.com;107

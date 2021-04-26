@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Launchpad</title>
+
+    <script>
+      window["sap-ushell-config"] = {
+        defaultRenderer: "fiori2",
+        bootstrapPlugins: {
+          RuntimeAuthoringPlugin: {
+            component: "sap.ushell.plugins.rta",
+            config: {
+              validateAppVersion: false,
+            },
+          },
+        },
+        applications: {
+          "demo-booksodatav2": {
+            title: "Books",
+            description: "OData V2",
+            additionalInformation: "SAPUI5.Component=demo.booksodatav2",
+            applicationType: "URL",
+            url: "./books-odatav2/webapp",
+            navigationMode: "embedded",
+          },
+          "demo-booksread": {
+            title: "Books",
+            description: "Read All",
+            additionalInformation: "SAPUI5.Component=demo.booksread",
+            applicationType: "URL",
+            url: "./books-read/webapp",
+            navigationMode: "embedded",
+          },
+          "demo-fiori": {
+            title: "Books",
+            description: "OData V4",
+            additionalInformation: "SAPUI5.Component=demo.fiori",
+            applicationType: "URL",
+            url: "./fiori/webapp",
+            navigationMode: "embedded",
+          },
+          "demo-booksui5masterdetail": {
+            title: "Books",
+            description: "UI5 Master Detail",
+            additionalInformation: "SAPUI5.Component=demo.booksui5masterdetail",
+            applicationType: "URL",
+            url: "./books-ui5-master-detail/webapp",
+            navigationMode: "embedded",
+          }
+        },
+      };
+    </script>
+
+    <script src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+    <script
+      src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+      data-sap-ui-libs="sap.m, sap.ushell, sap.collaboration, sap.ui.layout"
+      data-sap-ui-compatVersion="edge"
+      data-sap-ui-theme="sap_fiori_3"
+      data-sap-ui-frameOptions="allow"
+    ></script>
+    <script>
+      sap.ui
+        .getCore()
+        .attachInit(() =>
+          sap.ushell.Container.createRenderer().placeAt("content")
+        );
+    </script>
+  </head>
+  <body class="sapUiBody" id="content"></body>
+</html>
