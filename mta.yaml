@@ -69,6 +69,10 @@ modules:
        - demobooksodatav2.zip
        name: demobooksodatav2
        target-path: resources/
+     - artifacts:
+       - demobooksui5masterdetail.zip
+       name: demobooksui5masterdetail
+       target-path: resources/
  - name: fiori
    type: html5
    path: app/fiori
@@ -87,7 +91,7 @@ modules:
      commands:
      - npm install
      - npm run build
-     supported-platforms: []     
+     supported-platforms: []
  - name: demobooksodatav2
    type: html5
    path: app/books-odatav2
@@ -97,7 +101,17 @@ modules:
      commands:
      - npm install
      - npm run build
-     supported-platforms: []     
+     supported-platforms: []
+ - name: demobooksui5masterdetail
+   type: html5
+   path: app/books-ui5-master-detail
+   build-parameters:
+     build-result: dist
+     builder: custom
+     commands:
+     - npm install
+     - npm run build
+     supported-platforms: []
  # --------------------- SERVER MODULE ------------------------
  - name: cap-launchpad-srv
  # ------------------------------------------------------------
@@ -180,6 +194,3 @@ resources:
      service: xsuaa
      service-name: fiori-xsuaa-service
      service-plan: application
-
-
-

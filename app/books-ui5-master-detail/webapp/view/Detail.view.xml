@@ -24,6 +24,7 @@
 
 			/>
 		</semantic:headerContent>
+		<!-- 
 		<semantic:content>
 			<Table
 				id="lineItemsList"
@@ -65,6 +66,7 @@
 				</items>
 			</Table>
 		</semantic:content>
+		-->
 		<!--Semantic ShareMenu Buttons-->
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction
