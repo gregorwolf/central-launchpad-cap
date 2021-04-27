@@ -73,6 +73,10 @@ modules:
        - demobooksui5masterdetail.zip
        name: demobooksui5masterdetail
        target-path: resources/
+     - artifacts:
+       - validator.zip
+       name: validator
+       target-path: resources/
  - name: fiori
    type: html5
    path: app/fiori
@@ -105,6 +109,16 @@ modules:
  - name: demobooksui5masterdetail
    type: html5
    path: app/books-ui5-master-detail
+   build-parameters:
+     build-result: dist
+     builder: custom
+     commands:
+     - npm install
+     - npm run build
+     supported-platforms: []
+ - name: validator
+   type: html5
+   path: app/openui5-validator
    build-parameters:
      build-result: dist
      builder: custom
