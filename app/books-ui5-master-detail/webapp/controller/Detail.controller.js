@@ -1,13 +1,21 @@
 sap.ui.define([
+	'sap/ui/core/library',
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
 	"../model/formatter",
-	"sap/m/library"
-], function (BaseController, JSONModel, formatter, mobileLibrary) {
+	"sap/m/library",
+	'openui5/validator/Validator',
+	"sap/m/MessageToast",
+	'sap/ui/core/message/ControlMessageProcessor',
+	'sap/m/MessagePopover',
+	'sap/m/MessagePopoverItem',
+	'sap/ui/core/message/Message',
+], function (coreLibrary,BaseController, JSONModel, formatter, mobileLibrary,Validator,MessageToast,ControlMessageProcessor,MessagePopover,MessagePopoverItem,Message) {
 	"use strict";
 
 	// shortcut for sap.m.URLHelper
 	var URLHelper = mobileLibrary.URLHelper;
+	var MessageType = coreLibrary.MessageType;
 
 	return BaseController.extend("demo.booksui5masterdetail.controller.Detail", {
 
@@ -27,13 +35,59 @@ sap.ui.define([
 				lineItemListTitle : this.getResourceBundle().getText("detailLineItemTableHeading")
 			});
 
+			var oMessageProcessor = new ControlMessageProcessor();
+			var oMessageManager = sap.ui.getCore().getMessageManager();
+
+			oMessageManager.registerMessageProcessor(oMessageProcessor);
+
 			this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
 
 			this.setModel(oViewModel, "detailView");
 
 			this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
+			
+			const validationSchema = {
+				properties: {
+				  name: { // UI5 control ID
+					type: 'string',
+					minLength: 5, // required
+				  }
+				},
+			  };
+		
+			  // Initialize the OpenUI5 Validator object
+			  this._validator = new Validator(this.getView(), validationSchema);
 		},
+		onChangeName:function(evt){
+			sap.ui.getCore().getMessageManager().removeAllMessages();
+			
+			let valid = this._validator.validate();
+			sap.ui.getCore().getMessageManager().addMessages(this._validator.getErrors());
+			// Validates UI5 Controls against the validation schema set before
+			if (valid) {
+				MessageToast.show('Form is valid! No errors!');
+			} else {
+				MessageToast.show('Form is invalid! It contains errors!');
+			}
+		},
+		onMessagesButtonPress:function(event){
+			var oMessagesButton = event.getSource();
 
+			if (!this._messagePopover) {
+				this._messagePopover = new MessagePopover({
+					items: {
+						path: "message>/",
+						template: new MessagePopoverItem({
+							description: "{message>description}",
+							type: "{message>type}",
+							title: "{message>message}"
+						})
+					}
+				});
+				oMessagesButton.addDependent(this._messagePopover);
+			}
+			this._messagePopover.toggle(oMessagesButton);
+		},
 		/* =========================================================== */
 		/* event handlers                                              */
 		/* =========================================================== */

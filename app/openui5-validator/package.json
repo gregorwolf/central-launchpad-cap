@@ -1,0 +1,65 @@
+{
+  "name": "openui5-validator",
+  "version": "0.1.18",
+  "description": "An OpenUI5 library to validate fields",
+  "homepage": "https://github.com/mauriciolauffer/openui5-validator#readme",
+  "author": "Mauricio Lauffer",
+  "license": "MIT",
+  "keywords": [
+    "openui5",
+    "sapui5",
+    "ui5",
+    "ui5lab",
+    "validate",
+    "validator",
+    "validation"
+  ],
+  "main": "dist/resources/openui5/validator/library-preload.js",
+  "files": [
+    "dist",
+    "src",
+    "ui5.yaml"
+  ],
+  "dependencies": {
+    "ajv": "^6.12.6"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^2.10.3",
+    "@ui5/fs": "^2.0.6",
+    "@ui5/logger": "^2.0.1",
+    "@sap/ui5-builder-webide-extension": "^1.1.4",
+    "ui5-task-zipper": "^0.4.2",
+    "@openui5/ts-types": "^1.60.5",
+    "eslint": "^7.21.0",
+    "eslint-config-mlauffer-ui5": "0.0.4",
+    "karma": "^6.1.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.3",
+    "karma-coveralls": "^2.1.0",
+    "karma-ui5": "^2.3.3"
+  },
+  "scripts": {
+    "start": "ui5 serve",
+    "build": "ui5 build preload --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
+    "lint": "eslint src && eslint test",
+    "lint-fix": "eslint src --fix && eslint test --fix",
+    "test": "karma start",
+    "test-ci": "karma start karma.ci.conf",
+    "preversion": "npm run test-ci",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mauriciolauffer/openui5-validator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mauriciolauffer/openui5-validator/issues"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ui5-builder-webide-extension",
+      "ui5-task-zipper"
+    ]
+  }
+}

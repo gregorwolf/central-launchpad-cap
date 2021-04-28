@@ -12,7 +12,7 @@
         "resources": "resources.json",
         "dataSources": {
             "mainService": {
-                "uri": "/v2/catalog/",
+                "uri": "v2/catalog/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "2.0",
@@ -68,7 +68,8 @@
             "libs": {
                 "sap.ui.core": {},
                 "sap.m": {},
-                "sap.f": {}
+                "sap.f": {},
+                "openui5.validator": {}
             }
         },
         "contentDensities": {
