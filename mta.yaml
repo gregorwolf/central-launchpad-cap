@@ -30,7 +30,8 @@ modules:
          name: cap-launchpad-html-repo-host-key
    - name: cap-launchpad-destination-service
      parameters:
-       content-target: true        
+       content-target: true
+   - name: cap-launchpad-connectivity-service
    parameters:
      content:
        subaccount:
@@ -44,7 +45,7 @@ modules:
            ServiceInstanceName: fiori-xsuaa-service
            ServiceKeyName: cap-launchpad-uaa-key
            sap.cloud.service: my_service
-         existing_destinations_policy: update    
+         existing_destinations_policy: update
    build-parameters:
      no-source: true
  - name: cap-launchpad-ui-deployer
@@ -140,6 +141,8 @@ modules:
     # Resources extracted from CAP configuration
     - name: cap-launchpad-db
     - name: cap-launchpad-uaa
+    - name: cap-launchpad-connectivity-service
+    - name: cap-launchpad-destination-service
    provides:
     - name: srv-api      # required by consumers of CAP services (e.g. approuter)
       properties:
@@ -208,3 +211,8 @@ resources:
      service: xsuaa
      service-name: fiori-xsuaa-service
      service-plan: application
+ - name: cap-launchpad-connectivity-service
+   parameters:
+     service-plan: lite
+     service: connectivity
+   type: org.cloudfoundry.managed-service
