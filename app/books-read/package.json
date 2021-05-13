@@ -16,11 +16,11 @@
         "@ui5/cli": "^2.10.3",
         "@ui5/fs": "^2.0.6",
         "@ui5/logger": "^2.0.1",
-        "@sap/ux-ui5-tooling": "^1.1.9",
+        "@sap/ux-ui5-tooling": "^1.1.10",
         "rimraf": "^3.0.2",
         "@sap/ux-specification": "latest",
         "@sap/ui5-builder-webide-extension": "^1.1.4",
-        "ui5-task-zipper": "^0.4.2",
+        "ui5-task-zipper": "^0.4.3",
         "mbt": "^1.1.1"
     },
     "ui5": {

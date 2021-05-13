@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "devDependencies": {
     "@sap/ui5-builder-webide-extension": "^1.1.4",
-    "@sapui5/ts-types": "^1.84.9",
+    "@sapui5/ts-types": "^1.84.13",
     "@ui5/cli": "^2.10.3",
     "bestzip": "^2.2.0",
     "rimraf": "^3.0.2"
